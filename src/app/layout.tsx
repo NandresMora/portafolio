@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
+// import { Toaster } from "@/components/ui/toaster"; // <-- Comenta esto
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   description: "Portafolio de Andrés Mora Mateus — Ingeniero de Sistemas Junior con 4+ años en soporte TI y desarrollo web. JavaScript, Python, Azure, APIs REST.",
   keywords: ["Andrés Mora", "Ingeniero de Sistemas", "Desarrollador Web", "JavaScript", "Python", "Azure", "Portafolio", "Colombia"],
   authors: [{ name: "Andrés Mora Mateus" }],
+  icons: {
+    icon: "/logo.svg",
+  },
   openGraph: {
     title: "Andrés Mora | Ingeniero de Sistemas & Desarrollador Web",
     description: "Portafolio profesional — De IT Support a Desarrollador Web",
@@ -40,8 +43,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        {children}
-        <Toaster />
+        {children} 
+        {/* <Toaster /> */}  {/* <-- Comenta esto */}
       </body>
     </html>
   );

@@ -6,135 +6,163 @@
 export const PERSONAL = {
     name: 'Andrés Mora',
     fullName: 'Andrés Mora Mateus',
-    title: 'Ingeniero de Sistemas | Dev Jr',
-    heroTitle: 'Desarrollador Web Jr ',
-    heroHighlight: 'Ingeniero de Sistemas ',
-    bio: 'Estudiante de ultimo semestre de Ingeniería de Sistemas con 4+ años en soporte TI y pasión por el desarrollo web. Combino conocimiento operativo real de infraestructura con habilidades de programación para crear soluciones alineadas al negocio.',
+    title: 'Ingeniero de Sistemas | DevOps Junior',
+    heroTitle: 'Ingeniero DevOps Junior ',
+    heroHighlight: 'Automatización & Cultura CAMS',
+    bio: 'Estudiante de último semestre de Ingeniería de Sistemas con 4+ años de experiencia técnica. Especializado en cerrar la brecha entre desarrollo y operaciones mediante la automatización, gestión de infraestructura cloud y optimización de flujos de trabajo.',
     location: 'Chía, Cundinamarca – Colombia',
     email: 'andres.mora.mateus@gmail.com',
     phone: '+57 312 360 2705',
     phoneHref: 'tel:+573123602705',
     linkedin: 'https://linkedin.com/in/andres-mora-it',
     linkedinLabel: 'linkedin.com/in/andres-mora-it',
-    github: 'https://github.com/NandresMora?tab=overview&from=2026-01-01&to=2026-01-31',           // ← Actualiza con tu usuario
-    githubLabel: 'github.com/NandresMora', // ← Actualiza con tu usuario
+    github: 'https://github.com/NandresMora?tab=overview&from=2026-01-01&to=2026-01-31',
+    githubLabel: 'github.com/NandresMora',
     available: true,
 }
 
 export const STATS = [
-    { value: 3, suffix: '', label: 'Proyectos Web', icon: 'Rocket' },
+    { value: 5, suffix: '+', label: 'Proyectos DevOps', icon: 'Rocket' },
     { value: 4, suffix: '+', label: 'Años en TI', icon: 'Briefcase' },
     { value: 700, suffix: '+', label: 'Equipos Gestionados', icon: 'MonitorCog' },
     { value: 1, suffix: '', label: 'Certificación ITIL v4', icon: 'Award' },
 ] as const
 
 export const TECH_BADGES = [
-    'JavaScript', 'Python', 'HTML / CSS', 'MySQL', 'APIs REST', 'Azure', 'n8n', 'ITIL v4',
+    'Docker', 'Azure', 'Python', 'Bash', 'CI/CD', 'Linux', 'n8n', 'ITIL v4',
 ]
 
 // ─── Proyectos Web ─────────────────────────────────────────────────────
-// Reemplaza los placeholders con tus proyectos web reales
 export const WEB_PROJECTS = [
     {
-        title: 'Sinnexys',
-        description: 'Desarrollo de una página web para Sinnexys, una empresa de desarrollo y consultoría en TI.',
-        tech: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
-        role: 'Desarrollador Web',
+        title: 'Pipeline CI/CD Sinnexys',
+        description: 'Optimización del despliegue y gestión de infraestructura cloud para una plataforma de consultoría TI.',
+        functionalDescription: 'Automatización del ciclo de vida del software, reduciendo errores manuales en despliegues y mejorando la disponibilidad del sitio.',
+        technicalDescription: 'Implementación de contenedores Docker, flujos de integración continua y despliegue automatizado hacia Supabase y entornos cloud.',
+        tech: ['Docker', 'GitHub Actions', 'Supabase', 'TypeScript'],
+        role: 'Ingeniero DevOps / Deploy',
         image: '/sinnexys.png',
+        status: 'completed',
         achievements: [
-            'Diseño y desarrollo de una página web moderna y profesional para Sinnexys.',
-            'Implementación de tecnologías modernas como React, TypeScript y Tailwind CSS.',
-            'Creación de una experiencia de usuario intuitiva y atractiva.',
+            'Reducción del 40% en tiempos de despliegue mediante automatización.',
+            'Configuración de entornos aislados con contenedores para desarrollo y producción.',
+            'Implementación de monitoreo básico de salud de la aplicación.',
         ],
-        link: 'https://www.sinnexys.dev',
+        demoLink: 'https://www.sinnexys.dev',
+        repoLink: 'https://github.com/NandresMora',
     },
     {
-        title: 'Contadores DyD',
-        description: 'Desarrollo de una página web para Contadores DyD, una empresa de contabilidad y finanzas.',
-        tech: ['Node.js', 'JavaScript', 'CSS'],
-        role: 'Desarrollador Frontend',
+        title: 'Automatización Infraestructura DyD',
+        description: 'Migración y orquestación de servicios web corporativos para una firma contable.',
+        functionalDescription: 'Aseguramiento de la continuidad del negocio mediante backups automatizados y gestión eficiente de recursos cloud.',
+        technicalDescription: 'Configuración de servidores web bajo Node.js, gestión de certificados SSL automatizada y optimización de logs.',
+        tech: ['Node.js', 'Linux', 'Nginx', 'SSL/TLS'],
+        role: 'Administrador de Sistemas',
         image: '/dydcontadores.jpg',
+        status: 'completed',
         achievements: [
-            'Diseño y desarrollo de una página web moderna y profesional para Contadores DyD.',
-            'Implementación de tecnologías modernas como Node.js, JavaScript y CSS.',
-            'Creación de una experiencia de usuario intuitiva y atractiva.',
+            'Implementación de certificados de seguridad automáticos con Certbot.',
+            'Configuración de logs centralizados para diagnóstico rápido de caídas.',
+            'Optimización de la configuración del servidor para soportar picos de tráfico.',
         ],
-        link: 'https://dydcontadores.vercel.app/',
+        demoLink: 'https://dydcontadores.vercel.app/',
+        repoLink: 'https://github.com/NandresMora',
     },
     {
-        title: 'SENA -ecommerce',
-        description: 'Desarrollo de una página web para el SENA, una empresa de comercio electrónico.',
-        tech: ['HTML', 'CSS', 'JavaScript', 'API REST'],
-        role: 'Desarrollador Web',
+        title: 'Integración API SENA Ecommerce',
+        description: 'Gestión de flujos de datos y conectividad entre servicios frontend y backend.',
+        functionalDescription: 'Garantía de integridad de datos en el intercambio de información entre la tienda virtual y servicios externos.',
+        technicalDescription: 'Consumo y orquestación de APIs REST, manejo de variables de entorno y seguridad en la comunicación cliente-servidor.',
+        tech: ['API REST', 'JavaScript', 'Environment Management', 'JSON'],
+        role: 'Integrador de Sistemas',
         image: '/sena-ecommerce.png',
+        status: 'completed',
         achievements: [
-            'Diseño y desarrollo de una página web moderna y profesional para el SENA.',
-            'Implementación de tecnologías modernas como HTML, CSS y JavaScript.',
-            'Creación de una experiencia de usuario intuitiva y atractiva.',
+            'Normalización de respuestas de API para mejorar la resiliencia del frontend.',
+            'Implementación de manejo de errores en capas de integración.',
+            'Optimización de peticiones asíncronas para reducir latencia.',
         ],
-        link: 'https://github.com/johanjaguardev/SENA-ecommerce.git',
+        demoLink: 'https://github.com/johanjaguardev/SENA-ecommerce.git',
+        repoLink: 'https://github.com/johanjaguardev/SENA-ecommerce.git',
+    },
+    {
+        title: 'Dashboard de Gestión de Activos (IaC)',
+        description: 'Prototipo de sistema de inventario con despliegue automatizado e infraestructura como código.',
+        functionalDescription: 'Control centralizado de activos tecnológicos con trazabilidad completa de cambios en la infraestructura.',
+        technicalDescription: 'Desarrollo bajo Next.js 14, orquestación con Prisma y base de datos PostgreSQL, con despliegue mediante infraestructura declarativa.',
+        tech: ['Next.js', 'Prisma', 'PostgreSQL', 'Docker Compose'],
+        role: 'DevOps & Full Stack',
+        image: '/logo.svg',
+        status: 'in-progress',
+        achievements: [
+            'Diseño de esquema de base de datos optimizado para auditoría.',
+            'Contenerización de la base de datos y la aplicación para portabilidad total.',
+            'Implementación de scripts de migración automática de esquemas.',
+        ],
+        demoLink: '#',
+        repoLink: 'https://github.com/NandresMora',
     },
 ]
 
 // ─── Proyectos TI (del CV) ─────────────────────────────────────────────
 export const IT_PROJECTS = [
     {
-        title: 'Chatbot de Soporte N1',
+        title: 'Chatbot DevOps N1',
         description:
-            'Integrado con GLPI y Microsoft Teams para resolución automática de incidentes y escalamiento a mesa de ayuda.',
-        tech: ['API REST', 'GLPI', 'Microsoft Teams'],
+            'Integración de Microsoft Teams con GLPI mediante webhooks para automatizar la apertura de tickets.',
+        tech: ['Webhooks', 'API REST', 'Microsoft Teams'],
     },
     {
-        title: 'Mesa de Ayuda ITSM con GLPI',
+        title: 'Estandarización ITIL con GLPI',
         description:
-            'Instalación, configuración y parametrización completa de GLPI bajo buenas prácticas ITIL para gestión de incidentes.',
-        tech: ['GLPI', 'ITIL v4', 'SLA'],
+            'Implementación de procesos ITSM para gestión de cambios y configuración de SLAs automáticos.',
+        tech: ['GLPI', 'ITIL v4', 'Automation'],
     },
     {
-        title: 'Automatización de Procesos',
+        title: 'Flujos n8n para Operaciones',
         description:
-            'Interconexión de aplicaciones corporativas y consumo de APIs REST para optimizar flujos de trabajo.',
-        tech: ['APIs REST', 'n8n', 'Automatización'],
+            'Automatización de tareas repetitivas de TI interconectando aplicaciones mediante flujos de bajo código.',
+        tech: ['n8n', 'APIs REST', 'No-Code/Low-Code'],
     },
 ]
 
 // ─── Stack Tecnológico ─────────────────────────────────────────────────
 export const SKILLS = [
     {
-        title: 'Desarrollo & Scripting',
+        title: 'Automatización & Scripting',
         icon: 'Code2',
         color: 'blue',
-        skills: ['JavaScript', 'Python', 'HTML/CSS', 'APIs REST'],
+        skills: ['Python', 'Bash', 'JavaScript', 'n8n'],
     },
     {
-        title: 'Bases de Datos',
+        title: 'Contenedores & Orquestación',
         icon: 'Database',
         color: 'emerald',
-        skills: ['MySQL', 'SQL', 'Consultas', 'Gestión básica'],
+        skills: ['Docker', 'Docker Compose', 'Kubernetes (Learning)', 'Linux'],
     },
     {
-        title: 'Cloud & Plataformas',
+        title: 'Cloud & Infraestructura',
         icon: 'Cloud',
         color: 'violet',
-        skills: ['Microsoft Azure', 'Microsoft 365', 'SharePoint Online'],
+        skills: ['Microsoft Azure', 'Azure DevOps', 'AWS (Basic)', 'M365'],
     },
     {
-        title: 'Identidades & Seguridad',
-        icon: 'Shield',
-        color: 'orange',
-        skills: ['Active Directory', 'Usuarios', 'Grupos', 'Permisos'],
-    },
-    {
-        title: 'Automatización',
+        title: 'CI/CD & Versionado',
         icon: 'Workflow',
         color: 'pink',
-        skills: ['n8n', 'Integración de APIs', 'Flujos automatizados'],
+        skills: ['GitHub Actions', 'Git', 'Branching Strategy', 'Pipelines'],
     },
     {
-        title: 'Herramientas',
+        title: 'Seguridad & Identidades',
+        icon: 'Shield',
+        color: 'orange',
+        skills: ['Active Directory', 'IAM', 'Seguridad en APIs', 'Permisos'],
+    },
+    {
+        title: 'Gestión & Herramientas',
         icon: 'Wrench',
         color: 'cyan',
-        skills: ['GLPI', 'Azure DevOps', 'Git', 'ITIL v4', 'VS Code'],
+        skills: ['ITIL v4', 'GLPI', 'VS Code', 'Azure Boards', 'Monitoring'],
     },
 ]
 
@@ -142,46 +170,36 @@ export const SKILLS = [
 export const EXPERIENCE = [
     {
         company: 'Sinapsys-IT',
-        role: 'Analista de Sistemas — Soporte Técnico N2',
+        role: 'Analista de Sistemas & Operaciones — Soporte N2',
         period: 'Oct 2024 – Actualidad',
         isActive: true,
         highlights: [
-            'Soporte avanzado a Microsoft 365 y apps corporativas',
-            'Administración de accesos en Active Directory y SharePoint',
-            'Análisis de logs para diagnóstico de incidentes complejos',
-            'Pruebas funcionales y apoyo en despliegues de software',
+            'Gestión y monitoreo de infraestructura Microsoft 365 y Azure.',
+            'Administración automatizada de accesos y permisos en AD y SharePoint.',
+            'Análisis profundo de logs para identificación proactiva de fallas en sistemas.',
+            'Colaboración en el despliegue y validación de nuevas versiones de software.',
         ],
     },
     {
         company: 'Taller 5',
-        role: 'Asistente de Sistemas — Soporte Técnico',
+        role: 'Especialista en Sistemas — Automatización ITSM',
         period: 'May 2024 – Sep 2024',
         isActive: false,
         highlights: [
-            'Creó e implementó mesa de ayuda con GLPI',
-            'Soporte en despliegue y validación funcional de aplicaciones',
-            'Documentación técnica y manuales de usuario',
+            'Lideró la implementación de la mesa de ayuda GLPI bajo buenas prácticas ITIL.',
+            'Automatizó flujos de escalamiento y notificación de incidentes.',
+            'Validó despliegues funcionales asegurando la estabilidad operativa.',
         ],
     },
     {
         company: 'Telefónica – Proyecto SENA',
-        role: 'Soporte Técnico en Sitio N2',
+        role: 'Soporte Técnico Especializado N2',
         period: 'Abr 2022 – Mar 2024',
         isActive: false,
         highlights: [
-            'Gestión de incidentes en infraestructura de 700+ equipos',
-            'Diagnóstico de hardware, parcheo y reparaciones break-fix',
-            'Análisis de logs para reducción de incidentes recurrentes',
-        ],
-    },
-    {
-        company: 'SITIC de Colombia',
-        role: 'Técnico de Mantenimiento',
-        period: 'Nov 2021 – Feb 2022',
-        isActive: false,
-        highlights: [
-            'Mantenimiento preventivo y correctivo de estaciones de trabajo',
-            'Documentación técnica de procesos de soporte',
+            'Mantenimiento de infraestructura crítica para 700+ estaciones de trabajo.',
+            'Diagnóstico y resolución de problemas de hardware y red a nivel operativo.',
+            'Generación de informes técnicos de disponibilidad y desempeño.',
         ],
     },
 ]
@@ -190,18 +208,18 @@ export const EXPERIENCE = [
 export const EDUCATION = [
     {
         degree: 'Ingeniería de Sistemas',
-        institution: '',
-        period: 'Último semestre — Finaliza 2026',
+        institution: 'Último Semestre',
+        period: 'Finaliza 2026',
     },
     {
         degree: 'ADSO — Análisis y Desarrollo de Software',
         institution: 'SENA',
-        period: 'En curso, finaliza 2026',
+        period: 'En curso',
     },
     {
         degree: 'Técnico Profesional en Sistemas',
         institution: 'SENA',
-        period: '2021',
+        period: 'Graduado 2021',
     },
 ]
 
@@ -212,8 +230,8 @@ export const CERTIFICATIONS = [
         color: 'blue',
     },
     {
-        name: 'Bootcamp en Programación Web',
-        issuer: 'Completado',
+        name: 'Fundamentos de DevOps',
+        issuer: 'Formación Complementaria',
         color: 'violet',
     },
 ]
@@ -221,38 +239,38 @@ export const CERTIFICATIONS = [
 // ─── Competencias ──────────────────────────────────────────────────────
 export const COMPETENCIES = [
     {
-        title: 'Pensamiento Analítico',
-        description: 'Resolución de problemas complejos aplicada al desarrollo de software',
-        icon: 'Code2',
-        color: 'blue',
-    },
-    {
-        title: 'Git & Versionado',
-        description: 'Control de versiones, branching y trabajo colaborativo',
-        icon: 'GitBranch',
-        color: 'emerald',
-    },
-    {
-        title: 'ITIL v4',
-        description: 'Gestión de servicios TI, SLA y mejores prácticas operativas',
+        title: 'Cultura DevOps (CAMS)',
+        description: 'Enfoque en colaboración, automatización, medición y compartición de conocimiento.',
         icon: 'Globe',
         color: 'violet',
     },
     {
-        title: 'Documentación Técnica',
-        description: 'Manuales de usuario, README y documentación de procesos',
+        title: 'Infraestructura como Código',
+        description: 'Gestión y aprovisionamiento de recursos mediante definición declarativa.',
         icon: 'Terminal',
         color: 'orange',
     },
     {
-        title: 'Orientación al Cliente',
-        description: 'Comunicación efectiva y empatía para soporte y atención de usuarios',
+        title: 'Monitoreo & Logs',
+        description: 'Análisis preventivo de sistemas para asegurar alta disponibilidad y resiliencia.',
         icon: 'Server',
         color: 'pink',
     },
     {
-        title: 'Adaptabilidad',
-        description: 'Trabajo en equipo colaborativo y adaptación a entornos dinámicos',
+        title: 'Gestión de SLAs',
+        description: 'Cumplimiento de acuerdos de nivel de servicio bajo marcos de trabajo ágiles.',
+        icon: 'Code2',
+        color: 'blue',
+    },
+    {
+        title: 'Integración Continua',
+        description: 'Automatización de pruebas y validaciones en el ciclo de vida del desarrollo.',
+        icon: 'GitBranch',
+        color: 'emerald',
+    },
+    {
+        title: 'Respuesta a Incidentes',
+        description: 'Diagnóstico rápido y resolución efectiva bajo presión en entornos críticos.',
         icon: 'Wrench',
         color: 'cyan',
     },

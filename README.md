@@ -1,47 +1,53 @@
-# Andrés Mora Mateus - Portafolio Profesional
+# Andrés Mora Mateus - Portafolio DevOps Junior
 
-![Versión](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Versión](https://img.shields.io/badge/version-1.2.0-blue.svg)
+![DevOps](https://img.shields.io/badge/DevOps-CAMS-orange.svg)
 ![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)
 ![Next.js](https://img.shields.io/badge/Next.js-16.1-000000?logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?logo=tailwind-css&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-Cloud-0089D6?logo=microsoft-azure&logoColor=white)
 
-Portafolio personal de desarrollo web y soporte TI, construido con tecnologías modernas para asegurar alto rendimiento, escalabilidad y un diseño responsivo.
+Portafolio profesional enfocado en Ingeniería DevOps, Automatización e Infraestructura Cloud. Diseñado para mostrar habilidades en el ciclo de vida del software (SDLC), monitoreo y cultura CAMS.
+
+## ✨ Perfil y Optimizaciones DevOps
+
+- **Enfoque en Automatización:** 
+    - Proyectos detallados sobre CI/CD, contenedores (Docker) e Infraestructura como Código (IaC).
+    - Integración de herramientas ITSM (GLPI) con flujos automatizados (n8n, webhooks).
+- **Stack Tecnológico DevOps:**
+    - Gestión de nubes (Azure), contenedores (Docker/K8s) y scripting (Python/Bash).
+    - Monitoreo de logs y salud de sistemas para asegurar resiliencia.
+- **Experiencia de Usuario (UX) Profesional:**
+    - Navegación fija, diseño 100% responsivo y animaciones fluidas con `framer-motion`.
+    - Fichas técnicas de proyectos con detalles de implementación DevOps.
 
 ## 🚀 Tecnologías
 
-Este proyecto está construido con un stack moderno de frontend:
-
-- **Framework:** [Next.js 16](https://nextjs.org/)
+- **Framework:** [Next.js 16 (App Router)](https://nextjs.org/)
 - **Librería UI:** [React 19](https://react.dev/)
 - **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
 - **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **Componentes:** [shadcn/ui](https://ui.shadcn.com/) (Radix UI)
+- **Animaciones:** [Framer Motion](https://www.framer.com/motion/)
+- **Componentes:** [shadcn/ui](https://ui.shadcn.com/)
 - **Iconos:** [Lucide React](https://lucide.dev/)
 
 ## 📂 Estructura del Proyecto
 
-El código fuente está organizado para ser modular y mantenible:
-
 ```text
 src/
 ├── app/
-│   ├── globals.css          # Estilos globales y variables
-│   ├── layout.tsx           # Layout principal y configuración de metadatos SEO
-│   └── page.tsx             # Ensamblador de la landing page
+│   ├── globals.css          # Estilos globales y variables de tema
+│   ├── layout.tsx           # Estructura base y SEO
+│   └── page.tsx             # Composición de la página principal
 ├── components/
-│   ├── portfolio/           # Componentes específicos del portafolio
-│   │   ├── data.ts          # Centralización de datos (experiencia, proyectos, etc.)
-│   │   ├── ui-shared.tsx    # Componentes UI reutilizables del portafolio
-│   │   ├── HeroSection.tsx  # Sección principal (Hero)
-│   │   ├── ProjectsSection.tsx # Lista de proyectos destacados
-│   │   └── ...              # Otras secciones (Skills, Experiencia, Contacto)
-│   └── ui/                  # Componentes base de shadcn/ui
+│   ├── portfolio/           # Componentes modulares del portafolio
+│   │   ├── data.ts          # Fuente de verdad para el contenido
+│   │   ├── ui-shared.tsx    # Componentes UI animados y reutilizables
+│   │   ├── ProjectsSection.tsx # Gestión de proyectos con filtros y modales
+│   │   └── ...              # Secciones: Hero, Skills, Experiencia, etc.
+│   └── ui/                  # Componentes base (Radix UI)
 ```
 
 ## 🛠️ Instalación y Uso Local
-
-Para correr este portafolio en tu máquina local, sigue estos pasos:
 
 1. **Clonar el repositorio**
    ```bash
@@ -50,7 +56,6 @@ Para correr este portafolio en tu máquina local, sigue estos pasos:
    ```
 
 2. **Instalar dependencias**
-   Puedes usar `npm`, `yarn` o `bun`.
    ```bash
    npm install
    # o
@@ -59,23 +64,18 @@ Para correr este portafolio en tu máquina local, sigue estos pasos:
 
 3. **Iniciar el servidor de desarrollo**
    ```bash
-   npx next dev -p 3000
+   npm run dev
    ```
 
 4. **Visualizar el sitio**
    Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-## ⚙️ Compilación para Producción
+## ⚙️ Compilación y Despliegue
 
-Para compilar la aplicación para entornos de producción:
+- **Build de producción:** `npm run build`
+- **Previsualización:** `npm run start`
 
-```bash
-npx next build
-```
-
-## 🌐 Despliegue Configurado
-
-El proyecto está configurado con `output: "standalone"` en `next.config.ts`, lo que optimiza el tamaño del bundle generado y facilita el despliegue en contenedores Docker o plataformas de hosting modernas (Vercel, Railway, Render).
+El proyecto está listo para ser desplegado en plataformas como Vercel, Railway o mediante Docker (configuración standalone incluida).
 
 ---
-*Desarrollado por [Andrés Mora Mateus](https://github.com/NandresMora).*
+*Optimizado y mantenido por [Andrés Mora Mateus](https://github.com/NandresMora).*

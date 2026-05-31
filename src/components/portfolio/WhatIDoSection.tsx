@@ -1,61 +1,88 @@
 'use client'
 
-import { Layout, Workflow, Shield, Cloud } from 'lucide-react'
+import { Workflow, Shield, Cloud, Activity } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 const CARDS = [
     {
-        icon: Layout,
-        title: 'Desarrollo Web',
-        description:
-            'Interfaces con JavaScript, HTML/CSS y consumo de APIs REST para integración de aplicaciones.',
-        accent: 'from-blue-500 to-blue-600',
-    },
-    {
         icon: Workflow,
-        title: 'Automatización',
+        title: 'CI/CD & Automatización',
         description:
-            'Flujos de trabajo automatizados con n8n e integración de servicios web para optimizar procesos.',
-        accent: 'from-violet-500 to-violet-600',
-    },
-    {
-        icon: Shield,
-        title: 'Soporte TI N2',
-        description:
-            'Troubleshooting avanzado, diagnóstico de incidentes, análisis de logs y gestión bajo ITIL v4.',
-        accent: 'from-emerald-500 to-emerald-600',
+            'Diseño de pipelines robustos y automatización de flujos con n8n para acelerar los ciclos de entrega.',
+        accent: 'from-blue-500 to-blue-600',
+        light: 'bg-blue-500/10 text-blue-400',
     },
     {
         icon: Cloud,
-        title: 'Cloud & Admin',
+        title: 'Infraestructura Cloud',
         description:
-            'Microsoft Azure, M365, SharePoint Online y gestión de identidades con Active Directory.',
+            'Gestión de entornos en Microsoft Azure y administración de servicios escalables bajo demanda.',
+        accent: 'from-violet-500 to-violet-600',
+        light: 'bg-violet-500/10 text-violet-400',
+    },
+    {
+        icon: Activity,
+        title: 'Monitoreo & SRE',
+        description:
+            'Análisis de logs y métricas de salud para garantizar la alta disponibilidad y resiliencia de los sistemas.',
+        accent: 'from-emerald-500 to-emerald-600',
+        light: 'bg-emerald-500/10 text-emerald-400',
+    },
+    {
+        icon: Shield,
+        title: 'Seguridad & ITSM',
+        description:
+            'Administración de identidades (IAM) y gestión de servicios TI alineados a buenas prácticas ITIL v4.',
         accent: 'from-orange-500 to-orange-600',
+        light: 'bg-orange-500/10 text-orange-400',
     },
 ]
 
 export function WhatIDoSection() {
     return (
-        <section className="py-14 border-b border-slate-700/30 bg-slate-800/30">
+        <section className="py-20 border-b border-slate-700/30 bg-slate-900/50">
             <div className="container mx-auto px-6">
                 <div className="max-w-6xl mx-auto">
-                    <div className="text-center mb-10">
-                        <h3 className="text-2xl font-bold text-white mb-2">Lo Que Hago</h3>
-                        <p className="text-slate-400">Mi perfil combina desarrollo e infraestructura</p>
+                    <div className="text-center mb-16">
+                        <motion.h3 
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-3xl font-bold text-white mb-4"
+                        >
+                            Especialidades
+                        </motion.h3>
+                        <motion.p 
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-slate-400 text-lg max-w-2xl mx-auto"
+                        >
+                            Soluciones integrales que unen el mundo del desarrollo de software con la infraestructura tecnológica.
+                        </motion.p>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {CARDS.map(({ icon: Icon, title, description, accent }) => (
-                            <div
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {CARDS.map(({ icon: Icon, title, description, accent, light }, idx) => (
+                            <motion.div
                                 key={title}
-                                className="p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-blue-600/40 transition-all hover:scale-105 group"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="p-8 bg-slate-800/40 rounded-3xl border border-slate-800 hover:border-blue-500/30 transition-all group relative overflow-hidden"
                             >
+                                <div className={cn("absolute top-0 right-0 w-24 h-24 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity blur-2xl", accent)} />
+                                
                                 <div
-                                    className={`w-12 h-12 bg-gradient-to-br ${accent} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}
+                                    className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-xl", light)}
                                 >
-                                    <Icon className="w-6 h-6 text-white" />
+                                    <Icon className="w-7 h-7" />
                                 </div>
-                                <h4 className="text-white font-semibold text-base mb-2">{title}</h4>
+                                <h4 className="text-white font-bold text-xl mb-3 group-hover:text-blue-400 transition-colors">{title}</h4>
                                 <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

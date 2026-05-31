@@ -10,7 +10,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export function SkillsSection() {
     return (
-        <section className="py-14 border-b border-slate-700/30">
+        <section id="skills" className="py-14 border-b border-slate-700/30">
             <div className="container mx-auto px-6">
                 <div className="max-w-6xl mx-auto">
                     <SectionHeading icon={Terminal} title="Stack Tecnológico" />

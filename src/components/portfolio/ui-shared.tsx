@@ -1,7 +1,9 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { CheckCircle2, Calendar } from 'lucide-react'
 
 // ─── Animated Counter ─────────────────────────────────────────────────
 interface AnimatedCounterProps {
@@ -13,8 +15,12 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({ value, suffix = '+', label, icon: Icon }: AnimatedCounterProps) {
     const [count, setCount] = useState(0)
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true })
 
     useEffect(() => {
+        if (!isInView) return
+
         const duration = 2000
         const steps = 60
         const increment = value / steps
@@ -29,17 +35,25 @@ export function AnimatedCounter({ value, suffix = '+', label, icon: Icon }: Anim
             }
         }, duration / steps)
         return () => clearInterval(timer)
-    }, [value])
+    }, [value, isInView])
 
     return (
-        <div className="text-center p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-blue-600/50 transition-all hover:scale-105">
-            <Icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+        <motion.div 
+            ref={ref}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5 }}
+            className="text-center p-6 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-all hover:shadow-xl hover:shadow-blue-900/10"
+        >
+            <div className="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Icon className="w-6 h-6 text-blue-400" />
+            </div>
             <div className="text-3xl font-bold text-white mb-1">
                 {count}
                 {suffix}
             </div>
-            <div className="text-sm text-slate-400">{label}</div>
-        </div>
+            <div className="text-sm text-slate-400 font-medium">{label}</div>
+        </motion.div>
     )
 }
 
@@ -51,31 +65,18 @@ interface TechBadgeProps {
 
 export function TechBadge({ children, delay = 0 }: TechBadgeProps) {
     return (
-        <Badge
-            variant="outline"
-            className="border-slate-600 text-slate-300 hover:border-blue-600 hover:text-blue-400 hover:bg-blue-600/10 transition-all cursor-default"
-            style={{ animationDelay: `${delay}ms` }}
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: delay / 1000 }}
         >
-            {children}
-        </Badge>
-    )
-}
-
-// ─── GraduationCap SVG ────────────────────────────────────────────────
-export function GraduationCap({ className }: { className?: string }) {
-    return (
-        <svg
-            className={className}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-            <path d="M6 12v5c3 3 9 3 12 0v-5" />
-        </svg>
+            <Badge
+                variant="outline"
+                className="px-3 py-1 border-slate-700 text-slate-400 hover:border-blue-500 hover:text-blue-400 hover:bg-blue-500/10 transition-all cursor-default text-xs font-medium bg-slate-800/30"
+            >
+                {children}
+            </Badge>
+        </motion.div>
     )
 }
 
@@ -89,24 +90,40 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ icon: Icon, title, subtitle, iconColor = 'text-blue-400' }: SectionHeadingProps) {
     return (
-        <div className="mb-8">
-            <h3 className="text-2xl font-bold text-white flex items-center gap-3">
-                <Icon className={`w-6 h-6 ${iconColor}`} />
-                {title}
-            </h3>
-            {subtitle && <p className="text-slate-400 text-sm mt-1">{subtitle}</p>}
-        </div>
+        <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+        >
+            <div className="flex items-center gap-3 mb-3">
+                <div className={cn("p-2 rounded-lg bg-slate-800/80 border border-slate-700", iconColor.replace('text', 'border'))}>
+                    <Icon className={cn("w-6 h-6", iconColor)} />
+                </div>
+                <h3 className="text-3xl font-bold text-white tracking-tight">
+                    {title}
+                </h3>
+            </div>
+            {subtitle && (
+                <p className="text-slate-400 text-base max-w-2xl leading-relaxed">
+                    {subtitle}
+                </p>
+            )}
+            <div className="mt-4 h-1 w-20 bg-gradient-to-r from-blue-600 to-violet-600 rounded-full" />
+        </motion.div>
     )
 }
 
+import { cn } from '@/lib/utils'
+
 // ─── Skill Card ───────────────────────────────────────────────────────
 const COLOR_MAP: Record<string, string> = {
-    blue: 'bg-blue-600/20 text-blue-400 border-blue-600/30',
-    emerald: 'bg-emerald-600/20 text-emerald-400 border-emerald-600/30',
-    violet: 'bg-violet-600/20 text-violet-400 border-violet-600/30',
-    orange: 'bg-orange-600/20 text-orange-400 border-orange-600/30',
-    pink: 'bg-pink-600/20 text-pink-400 border-pink-600/30',
-    cyan: 'bg-cyan-600/20 text-cyan-400 border-cyan-600/30',
+    blue: 'bg-blue-600/10 text-blue-400 border-blue-600/20',
+    emerald: 'bg-emerald-600/10 text-emerald-400 border-emerald-600/20',
+    violet: 'bg-violet-600/10 text-violet-400 border-violet-600/20',
+    orange: 'bg-orange-600/10 text-orange-400 border-orange-600/20',
+    pink: 'bg-pink-600/10 text-pink-400 border-pink-600/20',
+    cyan: 'bg-cyan-600/10 text-cyan-400 border-cyan-600/20',
 }
 
 interface SkillCardProps {
@@ -121,27 +138,30 @@ export function SkillCard({ icon: Icon, title, skills, color }: SkillCardProps) 
     const [bg, text] = cls.split(' ')
 
     return (
-        <div className="bg-slate-800/50 border border-slate-700 hover:border-blue-600/30 rounded-xl p-5 transition-all hover:scale-105 group">
-            <div className="flex items-center gap-3 mb-4">
-                <div className={`w-10 h-10 ${bg} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    <Icon className={`w-5 h-5 ${text}`} />
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-slate-800/40 border border-slate-700/50 hover:border-blue-500/40 rounded-2xl p-6 transition-all hover:shadow-lg hover:shadow-blue-900/10 group"
+        >
+            <div className="flex items-center gap-3 mb-5">
+                <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform", bg)}>
+                    <Icon className={cn("w-5 h-5", text)} />
                 </div>
-                <h4 className="text-white font-semibold">{title}</h4>
+                <h4 className="text-white font-bold text-lg">{title}</h4>
             </div>
             <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                    <Badge key={skill} className={cls}>
+                    <Badge key={skill} className={cn("px-3 py-1 font-medium", cls)}>
                         {skill}
                     </Badge>
                 ))}
             </div>
-        </div>
+        </motion.div>
     )
 }
 
 // ─── Timeline Item ────────────────────────────────────────────────────
-import { CheckCircle2, Calendar } from 'lucide-react'
-
 interface TimelineItemProps {
     company: string
     role: string
@@ -152,36 +172,47 @@ interface TimelineItemProps {
 
 export function TimelineItem({ company, role, period, highlights, isActive }: TimelineItemProps) {
     return (
-        <div className="relative pl-8 pb-8 last:pb-0 group">
-            <div className="absolute left-[11px] top-3 bottom-0 w-px bg-slate-700 group-last:hidden" />
+        <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative pl-10 pb-10 last:pb-0 group"
+        >
+            <div className="absolute left-[13px] top-3 bottom-0 w-[2px] bg-slate-800 group-last:hidden" />
             <div
-                className={`absolute left-0 top-[6px] w-6 h-6 rounded-full border-2 flex items-center justify-center ${isActive ? 'border-emerald-500 bg-emerald-500/20' : 'border-slate-600 bg-slate-800'
-                    }`}
+                className={cn(
+                    "absolute left-0 top-[6px] w-7 h-7 rounded-full border-2 flex items-center justify-center transition-colors z-10",
+                    isActive ? 'border-emerald-500 bg-emerald-500/20' : 'border-slate-700 bg-slate-900'
+                )}
             >
-                <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-emerald-400' : 'bg-slate-500'}`} />
+                <div className={cn("w-2.5 h-2.5 rounded-full", isActive ? 'bg-emerald-400' : 'bg-slate-600')} />
             </div>
-            <div>
-                <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <h4 className="text-white font-semibold">{role}</h4>
-                    {isActive && (
-                        <Badge className="bg-emerald-600/20 text-emerald-400 border-emerald-600/30 text-xs">
-                            Actual
-                        </Badge>
-                    )}
+            <div className="bg-slate-800/30 border border-slate-800/50 rounded-2xl p-6 hover:border-slate-700 transition-all hover:bg-slate-800/50">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <div>
+                        <h4 className="text-white font-bold text-xl mb-1">{role}</h4>
+                        <p className="text-blue-400 font-semibold">{company}</p>
+                    </div>
+                    <div className="flex flex-col items-end gap-2">
+                        {isActive && (
+                            <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 font-bold uppercase text-[10px] tracking-wider">
+                                Actual
+                            </Badge>
+                        )}
+                        <span className="text-slate-500 text-xs font-mono flex items-center gap-1.5 bg-slate-900/50 px-2 py-1 rounded-md">
+                            <Calendar className="w-3.5 h-3.5" /> {period}
+                        </span>
+                    </div>
                 </div>
-                <p className="text-blue-400 text-sm font-medium">{company}</p>
-                <p className="text-slate-500 text-xs mb-2 flex items-center gap-1">
-                    <Calendar className="w-3 h-3" /> {period}
-                </p>
-                <ul className="space-y-1">
+                <ul className="space-y-3">
                     {highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2 text-slate-400 text-sm">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-slate-600 flex-shrink-0 mt-0.5" />
+                        <li key={i} className="flex items-start gap-3 text-slate-400 text-sm leading-relaxed">
+                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500/50 flex-shrink-0" />
                             {h}
                         </li>
                     ))}
                 </ul>
             </div>
-        </div>
+        </motion.div>
     )
 }

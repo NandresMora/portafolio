@@ -35,9 +35,9 @@ function FloatingSnippet({
 }) {
     return (
         <div
-            className={`hidden lg:block absolute bg-slate-800/80 border border-slate-700/80 rounded-lg px-4 py-2.5 font-mono text-xs text-emerald-400 backdrop-blur-sm shadow-xl shadow-slate-900/40 ${className} `}
+            className={`hidden lg:block absolute bg-slate-800/800 border border-slate-700/80 rounded-lg px-4 py-2.5 font-mono text-xs text-emerald-400 backdrop-blur-sm shadow-xl shadow-slate-900/40 ${className} `}
         >
-            <span className="text-blue-400 select-none" id="about">{'> '}</span>
+            <span className="text-blue-400 select-none">{'> '}</span>
             {code}
         </div>
     )
@@ -69,7 +69,7 @@ function TerminalWindow() {
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                <span className="ml-2 text-slate-500 text-xs font-mono">andres@portfolio</span>
+                <span className="ml-2 text-slate-500 text-xs font-mono">andres@devops</span>
             </div>
             {/* Content */}
             <div className="px-4 py-4 font-mono text-xs space-y-2 text-slate-600">
@@ -78,20 +78,20 @@ function TerminalWindow() {
                     <span className="text-blue-400">whoami</span>
                 </p>
                 <p className="text-slate-400">Andrés Mora Mateus</p>
-                <p className="text-slate-500">Ingeniero de Sistemas Jr</p>
+                <p className="text-slate-500">Junior DevOps Engineer</p>
                 <p className="mt-2">
                     <span className="text-emerald-400">~</span>{' '}
-                    <span className="text-blue-400">cat skills.txt</span>
+                    <span className="text-blue-400">cat stack.yml</span>
                 </p>
-                <p className="text-slate-400">JavaScript · Python</p>
-                <p className="text-slate-400">Azure · APIs REST · n8n · IA · React</p>
+                <p className="text-slate-400">Docker · Azure · CI/CD</p>
+                <p className="text-slate-400">Python · Bash · Linux · IaC</p>
                 <p className="mt-2">
                     <span className="text-emerald-400">~</span>{' '}
-                    <span className="text-blue-400">echo $STATUS</span>
+                    <span className="text-blue-400">kubectl get pods</span>
                 </p>
                 <p className="text-emerald-400 flex items-center gap-1">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Proyecciones
+                    Running...
                 </p>
                 <p className="text-slate-600 mt-2">
                     <span className="animate-pulse">▌</span>
@@ -104,7 +104,7 @@ function TerminalWindow() {
 // ═══════════════════════════════════════════════════════════
 export function HeroSection() {
     return (
-        <section className="py-16 md:py-20 border-b border-slate-700/30 relative overflow-hidden min-h-[520px] flex items-center">
+        <section id="about" className="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-slate-700/30 relative overflow-hidden min-h-[600px] flex items-center">
             {/* Decorations */}
             <GridDecoration />
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
@@ -112,11 +112,11 @@ export function HeroSection() {
 
             {/* Floating code snippets */}
             <FloatingSnippet
-                code="const dev = new Engineer('Andrés')"
-                className="top-8 right-[340px] animate-[float_6s_ease-in-out_infinite]"
+                code="terraform { required_version = '>= 1.0' }"
+                className="top-28 right-[340px] animate-[float_6s_ease-in-out_infinite]"
             />
             <FloatingSnippet
-                code="git commit -m 'feat: new project'"
+                code="docker-compose up -d --build"
                 className="bottom-12 right-[380px] animate-[float_7s_ease-in-out_0.5s_infinite]"
             />
 
@@ -133,7 +133,7 @@ export function HeroSection() {
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
                         </span>
                         <Badge className="bg-emerald-600/20 text-emerald-400 border-emerald-600/30">
-                            Dispuesto a nuevas ideas
+                            Enfoque en Automatización
                         </Badge>
                     </div>
 
@@ -158,9 +158,9 @@ export function HeroSection() {
 
                     <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-4 max-w-xl">
                         Estudiante de último semestre de Ingeniería de Sistemas con{' '}
-                        <strong className="text-white">4+ años en TI</strong> y pasión
-                        por el desarrollo web. Combino conocimiento operativo real de
-                        infraestructura con programación para crear soluciones reales.
+                        <strong className="text-white">4+ años en TI</strong> y una sólida orientación
+                        hacia la <strong className="text-white">infraestructura escalable</strong>. Combino mi experiencia operativa real 
+                        con prácticas de DevOps para optimizar ciclos de entrega y estabilidad.
                     </p>
 
                     {/* Location */}

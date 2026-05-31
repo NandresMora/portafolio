@@ -1,18 +1,19 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  output: "export",
+const isProd = process.env.NODE_ENV === "production";
 
-  // Como tu repositorio se llama "portafolio", necesitamos esta configuración
-  // para que Next.js encuentre los estilos (CSS) y scripts (JS) correctamente.
-  basePath: '/portafolio',
-  assetPrefix: '/portafolio',
+const nextConfig: NextConfig = {
+  // Solo activa el export estático en producción (para GitHub Pages)
+  ...(isProd && { output: "export" }),
+
+  // basePath y assetPrefix solo en producción
+  basePath: isProd ? '/portafolio' : '',
+  assetPrefix: isProd ? '/portafolio' : '',
 
   images: {
     unoptimized: true,
   },
 
-  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },

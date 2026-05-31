@@ -2,72 +2,88 @@
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Award, Code2 } from 'lucide-react'
-import { GraduationCap, SectionHeading } from './ui-shared'
+import { Award, Code2, GraduationCap as GradIcon } from 'lucide-react'
+import { SectionHeading } from './ui-shared'
 import { EDUCATION, CERTIFICATIONS } from './data'
-
-const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-    Award,
-    Code2,
-}
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 const CERT_COLOR: Record<string, string> = {
-    blue: 'bg-blue-600/20 text-blue-400',
-    violet: 'bg-violet-600/20 text-violet-400',
+    blue: 'bg-blue-600/10 text-blue-400 border-blue-600/20',
+    violet: 'bg-violet-600/10 text-violet-400 border-violet-600/20',
 }
 
 export function EducationSection() {
     return (
-        <section className="py-14 border-b border-slate-700/30 bg-slate-800/30" id="education">
+        <section className="py-20 border-b border-slate-700/30 bg-slate-900/50" id="education">
             <div className="container mx-auto px-6">
-                <div className="max-w-4xl mx-auto">
-                    <SectionHeading icon={GraduationCap} title="Formación & Certificaciones" />
+                <div className="max-w-5xl mx-auto">
+                    <SectionHeading 
+                        icon={GradIcon} 
+                        title="Formación & Certificaciones" 
+                        subtitle="Mi trayectoria académica y validaciones profesionales"
+                    />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         {/* Education */}
-                        <div>
-                            <p className="text-slate-400 text-xs uppercase tracking-widest font-semibold mb-4">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                                <span className="w-8 h-px bg-slate-700" />
                                 Educación
-                            </p>
-                            <div className="space-y-3">
-                                {EDUCATION.map((ed) => (
-                                    <Card key={ed.degree} className="bg-slate-800/50 border-slate-700">
-                                        <CardContent className="py-4 px-5">
-                                            <h5 className="text-white font-semibold text-sm">{ed.degree}</h5>
-                                            {ed.institution && (
-                                                <p className="text-blue-400 text-xs">{ed.institution}</p>
-                                            )}
-                                            <p className="text-slate-500 text-xs mt-0.5">{ed.period}</p>
+                            </h4>
+                            <div className="space-y-4">
+                                {EDUCATION.map((ed, idx) => (
+                                    <Card key={ed.degree} className="bg-slate-800/40 border-slate-700/50 hover:border-blue-500/30 transition-all group">
+                                        <CardContent className="p-6">
+                                            <div className="flex justify-between items-start gap-4">
+                                                <div>
+                                                    <h5 className="text-white font-bold text-lg group-hover:text-blue-400 transition-colors">{ed.degree}</h5>
+                                                    {ed.institution && (
+                                                        <p className="text-slate-400 font-medium mt-1">{ed.institution}</p>
+                                                    )}
+                                                </div>
+                                                <Badge variant="outline" className="bg-slate-900/50 text-slate-500 border-slate-800 font-mono text-[10px]">
+                                                    {ed.period}
+                                                </Badge>
+                                            </div>
                                         </CardContent>
                                     </Card>
                                 ))}
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Certifications */}
-                        <div>
-                            <p className="text-slate-400 text-xs uppercase tracking-widest font-semibold mb-4">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                        >
+                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                                <span className="w-8 h-px bg-slate-700" />
                                 Certificaciones
-                            </p>
-                            <div className="space-y-3">
+                            </h4>
+                            <div className="space-y-4">
                                 {CERTIFICATIONS.map((cert) => {
-                                    const iconCls = CERT_COLOR[cert.color] ?? 'bg-slate-700 text-white'
+                                    const colorCls = CERT_COLOR[cert.color] ?? 'bg-slate-800 text-slate-400'
                                     const Icon = cert.color === 'blue' ? Award : Code2
                                     return (
                                         <Card
                                             key={cert.name}
-                                            className={`bg-slate-800/50 border-${cert.color}-600/30 border`}
+                                            className="bg-slate-800/40 border-slate-700/50 hover:border-blue-500/30 transition-all group"
                                         >
-                                            <CardContent className="py-4 px-5">
-                                                <div className="flex items-center gap-3">
-                                                    <div
-                                                        className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${iconCls}`}
-                                                    >
-                                                        <Icon className="w-4 h-4" />
+                                            <CardContent className="p-6">
+                                                <div className="flex items-center gap-5">
+                                                    <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform", colorCls)}>
+                                                        <Icon className="w-6 h-6" />
                                                     </div>
                                                     <div>
-                                                        <h5 className="text-white font-semibold text-sm">{cert.name}</h5>
-                                                        <p className="text-slate-400 text-xs">{cert.issuer}</p>
+                                                        <h5 className="text-white font-bold text-lg group-hover:text-blue-400 transition-colors">{cert.name}</h5>
+                                                        <p className="text-slate-400 font-medium">{cert.issuer}</p>
                                                     </div>
                                                 </div>
                                             </CardContent>
@@ -75,7 +91,7 @@ export function EducationSection() {
                                     )
                                 })}
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
